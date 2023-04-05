@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <span>Total Clicks: 0</span>
+        <button id="btn">Click me</button>
+    </body>
+    <script>
+        // const button = document.querySelector('button'); // <button> 태그가 많으면, 어떤 button 을 취해야 할 지 모르므로 정상 작동 X -> id 혹은 class 사용
+        const button = document.getElementById('btn');
+        const span = document.querySelector('span');
+        let counter = 0;
+        function handleClick() {
+            counter += 1;
+            span.innerText = `Total Clicks: ${counter}`;
+        }
+        button.addEventListener('click', handleClick);
+    </script>
+</html>
