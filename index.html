@@ -5,29 +5,26 @@
     </body>
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
         const root = document.getElementById('root');
-        const h3 = React.createElement(
-            'h3',
-            { 
-                id: 'sexy-span',
-                style: { color: 'red' },
-                onMouseEnter: () => console.log('mouse entered.'),
-            },
-            'Hello, I am a span'
+        // JSX 코드 -> 브라우저가 인식하지 못하므로, Babel을 활용해서 기존의 React.createElement로 변환
+        const title = (
+            <h3 id="title" onMouseEnter={ () => console.log('mouse entered.') }>
+                Hello, I am a title
+            </h3>
         );
-        const btn =  React.createElement(
-            'button', 
-            {
-                id: 'button with event',
-                style: {
+        const btn = (
+            <button 
+                style={{
                     backgroundColor: 'tomato',
-                },
-                onClick: () => console.log(`I'm clicked.`),
-            }, 
-            'Click me'
+                }} 
+                onClick={ () => console.log(`I'm clicked.`) }
+            > 
+                Click me
+            </button>
         );
-        const container = React.createElement('div', null, [h3, btn]);
+        const container = React.createElement('div', null, [title, btn]);
         // React 로 만든 element 를 HTML 안으로 렌더링 (Vanilla JS -> HTML 먼저 작성, Javascript로 HTML 태그 가져와서 사용) (React -> 완전 반대로 행동)
         ReactDOM.render(container, root);
     </script>
