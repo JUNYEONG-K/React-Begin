@@ -9,13 +9,32 @@
     <script type="text/babel">
         const root = document.getElementById('root');
         const App  = () => {
+            const [minutes, setMinutes] = React.useState();
+            const [hours, setHours] = React.useState();
+            const onChange = (event) => {
+                // 값 업데이트 & 컴폰넌트 재생성 & HTML 수정
+                setMinutes(event.target.value); 
+            }
             return (
                 <div>
                     <h1 className='Converter'>Super Converter </h1> 
                     <label htmlFor='minutes'>Minutes</label>
-                    <input id='minutes' placeholder='Minutes' type='number' />
+                    <input 
+                        value={minutes} 
+                        id='minutes' 
+                        placeholder='Minutes' 
+                        type='number'
+                        onChange={onChange}
+                    />
+                    <h4>You want to convert {minutes} </h4>
                     <label htmlFor='hours'>Hours</label>
-                    <input id='hours' placeholder='Hours' type = 'number' />
+                    <input 
+                        value={hours} 
+                        id='hours' 
+                        placeholder='Hours' 
+                        type = 'number' 
+                        onChange={onChange}
+                    />
                 </div>
             );
         }
