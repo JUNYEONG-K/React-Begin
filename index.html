@@ -8,27 +8,20 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById('root');
+        let counter = 0;
+        function countUp() {
+            counter++; 
+            // counter 값이 업데이트 될 때마다 화면을 다시 렌더링! -> 좋지 않은 방법...
+            ReactDOM.render(<Container />, root);
+        }
         // JSX 코드 -> 브라우저가 인식하지 못하므로, Babel을 활용해서 기존의 React.createElement로 변환
         // JSX -> 어플리케이션을 여러 작은 요소(component)로 나눠서 관리할 수 있도록 함.
-        const Title  = () => ( // Component의 첫 글자는 "대문자", 소문자는 HTML 태그로 인식됨.
-            <h3 id="title" onMouseEnter={ () => console.log('mouse entered.') }>
-                Hello, I am a title
-            </h3>
-        );
-        const Button = () => ( // Component의 첫 글자는 "대문자", 소문자는 HTML 태그로 인식됨.
-            <button 
-                style={{
-                    backgroundColor: 'tomato',
-                }} 
-                onClick={ () => console.log(`I'm clicked.`) }
-            > 
-                Click me
-            </button>
-        );
+
         // const container = React.createElement('div', null, [Title, Button]);
         const Container = () => (
             <div>
-                <Title /><Button />
+                <h3>Total Clicks: {counter}</h3>
+                <button onClick={countUp}>Click me</button>
             </div>
         )
         // React 로 만든 element 를 HTML 안으로 렌더링 (Vanilla JS -> HTML 먼저 작성, Javascript로 HTML 태그 가져와서 사용) (React -> 완전 반대로 행동)
