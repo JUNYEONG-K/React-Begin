@@ -17,13 +17,13 @@
             render();
         }
         function render() {
-            ReactDOM.render(<Container />, root);
+            ReactDOM.render(<App />, root);
         }
         // JSX 코드 -> 브라우저가 인식하지 못하므로, Babel을 활용해서 기존의 React.createElement로 변환
         // JSX -> 어플리케이션을 여러 작은 요소(component)로 나눠서 관리할 수 있도록 함.
 
         // const container = React.createElement('div', null, [Title, Button]);
-        const Container = () => (
+        const App  = () => (
             <div>
                 <h3>Total Clicks: {counter}</h3>
                 <button onClick={countUp}>Click me</button>
