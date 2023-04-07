@@ -12,6 +12,9 @@
         function countUp() {
             counter++; 
             // counter 값이 업데이트 될 때마다 화면을 다시 렌더링! -> 좋지 않은 방법...
+            render();
+        }
+        function render() {
             ReactDOM.render(<Container />, root);
         }
         // JSX 코드 -> 브라우저가 인식하지 못하므로, Babel을 활용해서 기존의 React.createElement로 변환
