@@ -9,20 +9,15 @@
     <script type="text/babel">
         const root = document.getElementById('root');
         const App  = () => {
-            let [counter, setCounter] = React.useState(0);
-            const onClick = () => {
-                // setCounter => 데이터 업데이트 & 자동 렌더링
-                // 컴포넌트는 100% 재생성, 
-                // HTML -> 리액트가 HTML로 변환할 때는 재생성된 컴포넌트와 이전의 컴포넌트를 비교해서 업데이트된 부분만 update
-                // setCounter(counter + 1);
-                setCounter((current) => current + 1); // 더 안전한 방식 -> 현재 값이 "기준" 임을 명시
-            }
-            console.log("rendered");
-            console.log(counter);
-            return (<div>
-                <h3>Total Clicks: {counter}</h3> 
-                <button onClick={onClick}>Click me</button>
-            </div>);
+            return (
+                <div>
+                    <h1>Super Converter </h1> 
+                    <label for='minutes'>Minutes</label>
+                    <input id='minutes' placeholder='Minutes' type='number' />
+                    <label for='hours'>Hours</label>
+                    <input id='hours' placeholder='Hours' type = 'number' />
+                </div>
+            );
         }
         // React 로 만든 element 를 HTML 안으로 렌더링 (Vanilla JS -> HTML 먼저 작성, Javascript로 HTML 태그 가져와서 사용) (React -> 완전 반대로 행동)
         ReactDOM.render(<App />, root);
