@@ -12,6 +12,8 @@
         function countUp() {
             counter++; 
             // counter 값이 업데이트 될 때마다 화면을 다시 렌더링! -> 좋지 않은 방법...
+            // rerendering 시에 Container 컴포넌트를 재생성하냐? - X => 이전과 비교해서 업데이트 된 부분만 비교해서 HTML 수정
+            // 즉, counter 값만 업데이트 in HTML
             render();
         }
         function render() {
