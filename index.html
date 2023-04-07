@@ -12,6 +12,8 @@
             let [counter, setCounter] = React.useState(0);
             const onClick = () => {
                 // setCounter => 데이터 업데이트 & 자동 렌더링
+                // 컴포넌트는 100% 재생성, 
+                // HTML -> 리액트가 HTML로 변환할 때는 재생성된 컴포넌트와 이전의 컴포넌트를 비교해서 업데이트된 부분만 update
                 setCounter(counter++);
             }
             console.log("rendered");
