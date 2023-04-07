@@ -8,28 +8,18 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById('root');
-        let counter = 0;
-        function countUp() {
-            counter++; 
-            // counter 값이 업데이트 될 때마다 화면을 다시 렌더링! -> 좋지 않은 방법...
-            // rerendering 시에 Container 컴포넌트를 재생성하냐? - X => 이전과 비교해서 업데이트 된 부분만 비교해서 HTML 수정
-            // 즉, counter 값만 업데이트 in HTML
-            render();
+        const App  = () => {
+            let [counter, setCounter] = React.useState(0);
+            const onClick = () => {
+                // setCounter => 데이터 업데이트 & 자동 렌더링
+                setCounter(counter++);
+            }
+            return (<div>
+                <h3>Total Clicks: {counter}</h3> 
+                <button onClick={onClick}>Click me</button>
+            </div>);
         }
-        function render() {
-            ReactDOM.render(<App />, root);
-        }
-        // JSX 코드 -> 브라우저가 인식하지 못하므로, Babel을 활용해서 기존의 React.createElement로 변환
-        // JSX -> 어플리케이션을 여러 작은 요소(component)로 나눠서 관리할 수 있도록 함.
-
-        // const container = React.createElement('div', null, [Title, Button]);
-        const App  = () => (
-            <div>
-                <h3>Total Clicks: {counter}</h3>
-                <button onClick={countUp}>Click me</button>
-            </div>
-        )
         // React 로 만든 element 를 HTML 안으로 렌더링 (Vanilla JS -> HTML 먼저 작성, Javascript로 HTML 태그 가져와서 사용) (React -> 완전 반대로 행동)
-        render();
+        ReactDOM.render(<App />, root);
     </script>
 </html>
