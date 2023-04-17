@@ -10,7 +10,7 @@
     <script type="text/babel">
         const root = document.getElementById('root');
         // Component <==> 함수, <Btn text="Save Changes" /> <==> Btn({ text: "Save Changes" })
-        function Btn ({ text, fontSize }) {
+        function Btn ({ text, fontSize = 18 }) {
             console.log(text, "was render");
             return (
                 <button  
@@ -35,7 +35,7 @@
             return (
                 <div>
                     <Btn text="Save Changes" fontSize={18} />
-                    <Btn fontSize={14}  />
+                    <Btn text="Continue" />
                 </div>
             );
         }
