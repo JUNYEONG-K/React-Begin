@@ -8,29 +8,22 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById('root');
-        function SaveBtn () {
+        function Btn (props) {
+            console.log(props);
             return <button style={{
                 backgroundColor: "tomato",
                 color: "white",
                 padding: "10px 20px",
                 border: 0,
                 borderRadius: 10,
-            }}>Save Changes</button>;
-        }
-        function ConfirmBtn () {
-            return <button style={{
-                backgroundColor: "tomato",
-                color: "white",
-                padding: "10px 20px",
-                border: 0,
-                borderRadius: 10,
-            }}>Confirm</button>;
+                fontSize: props.big ? 18 : 5,
+            }}>{props.text}</button>;
         }
         const App  = () => {
             return (
                 <div>
-                    <SaveBtn />
-                    <ConfirmBtn />
+                    <Btn text="Save Changes" big={true} />
+                    <Btn text="Continue" big={false} />
                 </div>
             );
         }
