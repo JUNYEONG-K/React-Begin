@@ -26,6 +26,7 @@
                 </button>
             );
         }
+        const MemorizedBtn = React.memo(Btn);
         const App  = () => {
             const [value, setValue] = React.useState("Save Changes");
             const changeValue = () => setValue("Revert Changes")
@@ -33,8 +34,8 @@
             //         -> 일반 HTML 안에 onClick property가 있다면, 그것은 jsx 문법으로 이벤트 리스너에 해당
             return (
                 <div>
-                    <Btn text={value} onClick={changeValue} />
-                    <Btn text="Continue" />
+                    <MemorizedBtn text={value} onClick={changeValue} />
+                    <MemorizedBtn text="Continue" />
                 </div>
             );
         }
