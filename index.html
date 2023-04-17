@@ -9,22 +9,32 @@
     <script type="text/babel">
         const root = document.getElementById('root');
         // Component <==> 함수, <Btn text="Save Changes" /> <==> Btn({ text: "Save Changes" })
-        function Btn (props) {
-            console.log(props);
-            return <button style={{
-                backgroundColor: "tomato",
-                color: "white",
-                padding: "10px 20px",
-                border: 0,
-                borderRadius: 10,
-                fontSize: props.big ? 18 : 5,
-            }}>{props.text}</button>;
+        function Btn ({ text, onClick }) {
+            console.log(text, "was render");
+            return (
+                <button 
+                    onClick={onClick}
+                    style={{
+                        backgroundColor: "tomato",
+                        color: "white",
+                        padding: "10px 20px",
+                        border: 0,
+                        borderRadius: 10,
+                    }}
+                >
+                {text}
+                </button>
+            );
         }
         const App  = () => {
+            const [value, setValue] = React.useState("Save Changes");
+            const changeValue = () => setValue("Revert Changes")
+            // onClick -> custom component 안에 있는 onClick은 이벤트 리스너가 아닌, props 이름일 뿐,
+            //         -> 일반 HTML 안에 onClick property가 있다면, 그것은 jsx 문법으로 이벤트 리스너에 해당
             return (
                 <div>
-                    <Btn text="Save Changes" big={true} />
-                    <Btn text="Continue" big={false} />
+                    <Btn text={value} onClick={changeValue} />
+                    <Btn text="Continue" />
                 </div>
             );
         }
