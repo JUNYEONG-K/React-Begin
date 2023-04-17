@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById('root');
+        // Component <==> 함수, <Btn text="Save Changes" /> <==> Btn({ text: "Save Changes" })
         function Btn (props) {
             console.log(props);
             return <button style={{
